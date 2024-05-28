@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:wide_clean/core/constants/api_constants.dart';
+import 'package:wide_clean/core/constants/api/api_constants.dart';
 import 'package:wide_clean/features/auth/data/models/registration_model.dart';
 
 part 'auth_api_service.g.dart';
@@ -13,8 +13,4 @@ abstract class AuthApiService {
   Future<HttpResponse<List<RegistrationModel>>> postUserData(
     @Body() RegistrationModel registrationModel,
   );
-
-  @GET(checkUser)
-  Future<HttpResponse<List<RegistrationModel>>> checkUserExists(
-      {@Query("userName") String? userName});
 }

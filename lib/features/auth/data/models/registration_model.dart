@@ -11,14 +11,23 @@ class RegistrationModel extends RegistrationEntity {
     String? phone,
     String? country,
   }) : super(
-        userName: userName,
-        password: password,
-        phone: phone,
-        country: country,
-      );
+          userName: userName,
+          password: password,
+          phone: phone,
+          country: country,
+        );
 
   factory RegistrationModel.fromJson(Map<String, dynamic> json) =>
       _$RegistrationModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RegistrationModelToJson(this);
+
+  static RegistrationModel fromEntity(RegistrationEntity entity) {
+    return RegistrationModel(
+      userName: entity.userName,
+      password: entity.password,
+      phone: entity.phone,
+      country: entity.country,
+    );
+  }
 }
