@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/language_bloc/language_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_page.dart';
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LanguageBloc>(create: (context) => LanguageBloc()),
-        BlocProvider<SignInBloc>(create: (context) => SignInBloc())
       ],
       child: MaterialApp(
         themeMode: ThemeMode.system,

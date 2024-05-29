@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
+import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_page.dart';
 
 class SignInSmsCode extends StatelessWidget {
   final String phoneNumber;
@@ -60,12 +61,12 @@ class SignInSmsCode extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            SignInSmsCode(phoneNumber: phoneNumber),
+                            const SignInPage(showLanguage: true),
                       ),
                     )
                   : ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("Iltimos telefon raqamingizni yozing!"),
+                        content: Text("Iltimos sms kodni kiriting!"),
                       ),
                     ),
             ),

@@ -11,7 +11,7 @@ class SignTextFieldWidget extends StatefulWidget {
   final bool isPassword;
   final String? Function(String?)? validator;
   final ValueChanged<String>? onChanged;
-  final bool? isCode;
+  final bool isCode;
 
   const SignTextFieldWidget(
       {super.key,
@@ -20,7 +20,7 @@ class SignTextFieldWidget extends StatefulWidget {
       this.isPassword = false,
       this.validator,
       this.onChanged,
-      this.isCode});
+      this.isCode = false});
 
   @override
   // ignore: library_private_types_in_public_api

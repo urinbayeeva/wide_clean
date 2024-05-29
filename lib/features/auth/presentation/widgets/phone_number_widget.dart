@@ -1,13 +1,14 @@
-import 'package:wide_clean/core/constants/text_style/app_textstyle.dart';
-import 'package:wide_clean/core/constants/colors/app_colors.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
+
+typedef PhoneNumberChangedCallback = void Function(
+    String phoneCode, String phoneNumber);
 
 class PhoneNumberTextFields extends StatefulWidget {
   final TextEditingController codeController;
   final TextEditingController numberController;
   final String hintText;
   final String? Function(String?)? validator;
-  final ValueChanged<String>? onChanged;
+  final PhoneNumberChangedCallback? onChanged;
 
   const PhoneNumberTextFields({
     super.key,
@@ -34,6 +35,11 @@ class _PhoneNumberTextFieldsState extends State<PhoneNumberTextFields> {
           child: TextFormField(
             keyboardType: TextInputType.phone,
             controller: widget.codeController,
+            onChanged: (value) {
+              if (widget.onChanged != null) {
+                widget.onChanged!(value, widget.numberController.text);
+              }
+            },
             decoration: InputDecoration(
               hintText: "+998",
               hintStyle: AppTextStyle.textFieldHintStyle,
@@ -82,7 +88,11 @@ class _PhoneNumberTextFieldsState extends State<PhoneNumberTextFields> {
           child: TextFormField(
             keyboardType: TextInputType.number,
             controller: widget.numberController,
-            onChanged: widget.onChanged,
+            onChanged: (value) {
+              if (widget.onChanged != null) {
+                widget.onChanged!(widget.codeController.text, value);
+              }
+            },
             validator: widget.validator,
             decoration: InputDecoration(
               hintText: widget.hintText,

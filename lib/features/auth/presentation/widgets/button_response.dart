@@ -10,8 +10,12 @@ class ButtonResponse extends StatelessWidget {
   final CallBackFunction onPressed;
   final Color? color;
 
-  const ButtonResponse(
-      {super.key, required this.text, required this.onPressed, this.color});
+  const ButtonResponse({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -8,6 +8,11 @@ class AppTextStyle {
       fontSize: 16,
       fontWeight: FontWeight.w500);
 
+  static const chooseLoginPage = TextStyle(
+      color: AppColors.mainBlackColor,
+      fontSize: 14,
+      fontWeight: FontWeight.w600);
+
   static const textFieldHintStyle = TextStyle(
       color: AppColors.textFieldColor,
       fontSize: 14,

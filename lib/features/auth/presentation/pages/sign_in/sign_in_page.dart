@@ -1,26 +1,47 @@
-import 'package:wide_clean/features/auth/data/models/registration_model.dart';
+import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_forget.dart';
 
 import '../../../../../core/constants/pages/all_pages.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  final bool showLanguage;
+  const SignInPage({super.key, this.showLanguage = false});
 
   @override
   Widget build(BuildContext context) {
     TextEditingController userNameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return BlocProvider(
-      create: (context) => SignInBloc(),
-      child: Scaffold(
+    SizeConfig().init(context);
+
+    // return BlocProvider(
+    //   create: (context) => SignInBloc(),
+    return Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
+              Visibility(
+                replacement: const SizedBox.shrink(),
+                visible: showLanguage,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SvgPicture.asset(AppImages.langGlobus),
+                      const SizedBox(height: 0),
+                      const Text(
+                        " O'zbekiston",
+                        style: AppTextStyle.chooseLanguagePage,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const Spacer(),
               SvgPicture.asset(AppImages.loginLogo),
-              SizedBox(height: SizeConfig.screenHeight * 0.12),
+              SizedBox(height: SizeConfig.screenHeight * 0.10),
               SignTextFieldWidget(
                 controller: userNameController,
                 hintText: "User name yoki ismingizni kiriting",
@@ -32,11 +53,17 @@ class SignInPage extends StatelessWidget {
                 hintText: "Parolingizni",
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.020),
-              const Align(
+              Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  "Parolni unutdingizmi?",
-                  style: AppTextStyle.forgotPasswordStyle,
+                child: InkWell(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignInForgetPassword())),
+                  child: const Text(
+                    "Parolni unutdingizmi?",
+                    style: AppTextStyle.forgotPasswordStyle,
+                  ),
                 ),
               ),
               const Spacer(),
@@ -48,50 +75,39 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.025),
-              BlocBuilder<SignInBloc, SignInState>(
-                builder: (context, state) {
-                  return ButtonResponse(
-                    color: userNameController.text.isNotEmpty &&
-                            passwordController.text.isNotEmpty
-                        ? AppColors.mainColor
-                        : AppColors.buttonHover,
-                    text: "Kirish",
-                    onPressed: () {
-                      if (userNameController.text.isNotEmpty &&
-                          passwordController.text.isNotEmpty) {
-                        // BlocProvider.of<SignInBloc>(context).add(
-                        //   SignInButtonPressed(
-                        //     username: userNameController.text,
-                        //     password: passwordController.text,
-                        //   ),
-                        // );
-                        RegisterUser(
-                          userName: userNameController.text.trim(),
-                          password: passwordController.text.trim(),
-                          phone: '',
-                          country: '',
-                        );
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const SignInPhoneNumber()));
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Iltimos ro'yhatni to'ldiring!"),
-                          ),
-                        );
-                      }
-                    },
-                  );
+              ButtonResponse(
+                color: userNameController.text.isNotEmpty &&
+                        passwordController.text.isNotEmpty
+                    ? AppColors.mainColor
+                    : AppColors.buttonHover,
+                text: "Kirish",
+                onPressed: () {
+                  if (userNameController.text.isNotEmpty &&
+                      passwordController.text.isNotEmpty) {
+                    // RegisterUser(
+                    //   userName: userNameController.text.trim(),
+                    //   password: passwordController.text.trim(),
+                    //   phone: '',
+                    //   country: '',
+                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignInPhoneNumber(),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Iltimos ro'yhatni to'ldiring!"),
+                      ),
+                    );
+                  }
                 },
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.025),
             ],
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -1,25 +1,28 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 
-class SignInPhoneNumber extends StatelessWidget {
-  const SignInPhoneNumber({super.key});
+class SignInForgetPassword extends StatelessWidget {
+  const SignInForgetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => PhoneNumberCubit(),
-      child: SignInPhoneNumberForm(),
+      // ignore: prefer_const_constructors
+      child: SignInForgetPasswordForm(),
     );
   }
 }
 
-class SignInPhoneNumberForm extends StatefulWidget {
-  const SignInPhoneNumberForm({super.key});
+class SignInForgetPasswordForm extends StatefulWidget {
+  const SignInForgetPasswordForm({super.key});
 
   @override
-  _SignInPhoneNumberFormState createState() => _SignInPhoneNumberFormState();
+  // ignore: library_private_types_in_public_api
+  _SignInForgetPasswordFormState createState() =>
+      _SignInForgetPasswordFormState();
 }
 
-class _SignInPhoneNumberFormState extends State<SignInPhoneNumberForm> {
+class _SignInForgetPasswordFormState extends State<SignInForgetPasswordForm> {
   final TextEditingController phoneCodeNumberController =
       TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();

@@ -13,3 +13,6 @@ export 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_
 export 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_state.dart';
 export 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_phone_number.dart';
 export 'package:wide_clean/features/auth/presentation/widgets/button_response.dart';
+export 'package:wide_clean/features/auth/presentation/bloc/phone_number_bloc/phone_number_cubit.dart';
+export 'package:wide_clean/features/auth/presentation/bloc/phone_number_bloc/phone_number_state.dart';
+export 'package:wide_clean/features/auth/presentation/widgets/phone_number_widget.dart';

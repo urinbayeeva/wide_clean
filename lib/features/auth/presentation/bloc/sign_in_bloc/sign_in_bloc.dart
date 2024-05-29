@@ -5,14 +5,10 @@ import 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(SignInInitial());
 
-  @override
   Stream<SignInState> mapEventToState(SignInEvent event) async* {
     if (event is RegisterUser) {
       try {
-        // Simulate registration process, replace with actual logic
-        await Future.delayed(Duration(seconds: 2));
-
-        // Registration successful
+        await Future.delayed(const Duration(seconds: 0));
         yield RegistrationSuccess();
       } catch (error) {
         yield RegistrationFailure(error.toString());
