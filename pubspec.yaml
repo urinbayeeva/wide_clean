@@ -25,6 +25,11 @@ dependencies:
   json_annotation: ^4.3.0
   flutter_svg: ^2.0.10+1
   bloc: ^8.1.4
+  vibration: ^1.9.0
+  video_player: ^2.8.6
+  expandable_text: ^2.3.0
+  shimmer: ^3.0.0
+  image_picker: ^1.1.1
 
 dev_dependencies:
   flutter_test:

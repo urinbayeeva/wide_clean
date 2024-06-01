@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:wide_clean/core/constants/pages/all_pages.dart';
 
 class SizeConfig {
   static MediaQueryData? _mediaQueryData;
@@ -19,10 +19,6 @@ class SizeConfig {
   static double responsiveHeight(double height) {
     return blockSizeVertical * height;
   }
-
-  static double get horizontalPaddingPercent => 18 / 100;
-
-  static double get horizontalPadding => screenWidth * horizontalPaddingPercent;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);

@@ -1,3 +1,6 @@
+import 'package:wide_clean/core/constants/routes/route_aware.dart';
+import 'package:wide_clean/core/constants/size/scale_size.dart';
+import 'package:wide_clean/features/auth/presentation/pages/home/home_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_forget.dart';
 
 import '../../../../../core/constants/pages/all_pages.dart';
@@ -26,16 +29,19 @@ class SignInPage extends StatelessWidget {
                 visible: showLanguage,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SvgPicture.asset(AppImages.langGlobus),
-                      const SizedBox(height: 0),
-                      const Text(
-                        " O'zbekiston",
-                        style: AppTextStyle.chooseLanguagePage,
-                      ),
-                    ],
+                  child: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SvgPicture.asset(AppImages.langGlobus),
+                        const SizedBox(height: 0),
+                        Text(
+                          " O'zbekiston",
+                          style: AppTextStyle.chooseLoginPage,
+                          textScaleFactor: ScaleSize.textScaleFactor(context),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -93,7 +99,10 @@ class SignInPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignInPhoneNumber(),
+                        builder: (context) => showLanguage
+                            ? const RouteAwareWidget(
+                                routeName: "/homePage", child: HomePage())
+                            : const SignInPhoneNumber(),
                       ),
                     );
                   } else {

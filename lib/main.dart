@@ -1,6 +1,7 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/language_bloc/language_bloc.dart';
-import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:wide_clean/features/auth/presentation/pages/response_page.dart';
+import 'package:wide_clean/features/auth/presentation/pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
         title: 'Wide',
         routes: {
           "/splashPage": (context) => const SplashPage(),
-          "/signIn": (context) => const SignInPage(),
+          "/homePage": (context) => const HomePage(),
+          "/responsePage": (context) => const ResponsePage(selectedPageIndex: 3)
         },
-        initialRoute: "/splashPage",
+        initialRoute: "/responsePage",
       ),
     );
   }

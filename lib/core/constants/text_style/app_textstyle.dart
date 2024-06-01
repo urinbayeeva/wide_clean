@@ -4,9 +4,10 @@ import 'package:wide_clean/core/constants/colors/app_colors.dart';
 class AppTextStyle {
   //Choose language, Login, Sign Up Page TextStyles
   static const chooseLanguagePage = TextStyle(
-      color: AppColors.mainBlackColor,
-      fontSize: 16,
-      fontWeight: FontWeight.w500);
+    color: AppColors.mainBlackColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
 
   static const chooseLoginPage = TextStyle(
       color: AppColors.mainBlackColor,
@@ -115,16 +116,16 @@ class AppTextStyle {
   //Comment Page TextStyle
   static const commentedUserText = TextStyle(
       color: AppColors.mainBlackColor,
-      fontSize: 18,
-      fontWeight: FontWeight.w500);
+      fontSize: 14,
+      fontWeight: FontWeight.w600);
 
   static const commentedData = TextStyle(
       color: AppColors.mainBlackColor,
-      fontSize: 14,
+      fontSize: 10,
       fontWeight: FontWeight.w500);
 
   static const commentedTitle = TextStyle(
-      color: AppColors.greyText, fontSize: 14, fontWeight: FontWeight.w400);
+      color: AppColors.greyText, fontSize: 12, fontWeight: FontWeight.w400);
 
   static const noComment = TextStyle(
       color: AppColors.mainBlackColor,
@@ -228,7 +229,7 @@ class AppTextStyle {
   static const appBarTextStyle = TextStyle(
       color: AppColors.mainBlackColor,
       fontSize: 20,
-      fontWeight: FontWeight.w500);
+      fontWeight: FontWeight.w600);
 
   static const clearAllFounded = TextStyle(
       color: AppColors.textFieldError,

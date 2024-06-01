@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Import Flutter SVG package
-import 'package:wide_clean/core/constants/size/size_config.dart';
-import 'package:wide_clean/core/constants/text_style/app_textstyle.dart';
-import 'package:wide_clean/core/constants/colors/app_colors.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart'; // Make sure you import AppImages
 
 class SignTextFieldWidget extends StatefulWidget {
@@ -42,8 +37,7 @@ class _SignTextFieldWidgetState extends State<SignTextFieldWidget> {
       width: SizeConfig.screenWidth,
       height: 52,
       child: TextFormField(
-        keyboardType:
-            widget.isCode! ? TextInputType.number : TextInputType.text,
+        keyboardType: widget.isCode ? TextInputType.number : TextInputType.text,
         controller: widget.controller,
         obscureText: widget.isPassword ? _obscureText : false,
         onChanged: widget.onChanged,
