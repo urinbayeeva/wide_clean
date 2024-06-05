@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wide_clean/core/constants/text_style/app_textstyle.dart';
+import 'package:wide_clean/core/constants/text/app_textstyle.dart';
 import 'package:wide_clean/core/constants/size/size_config.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:wide_clean/features/auth/presentation/widgets/button_response.dart';

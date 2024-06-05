@@ -53,8 +53,7 @@ class _CommentViewContentState extends State<_CommentViewContent> {
     return BlocBuilder<CommentBloc, CommentState>(
       builder: (context, state) {
         final comments = state.comments;
-        final rowCount =
-            (comments.length / 2).ceil(); // Calculate the number of rows
+        final rowCount = (comments.length / 2).ceil();
 
         return ListView.builder(
           itemCount: rowCount,

@@ -80,22 +80,6 @@ class _VideoWidgetState extends State<VideoWidget> {
                         },
                         isLoading: isLoading,
                       ),
-                      // VideoControlsWidget(
-                      //   isPlaying: isPlaying,
-                      //   position: position,
-                      //   duration: duration,
-                      //   onPlayPausePressed: () {
-                      //     if (isPlaying) {
-                      //       widget.videoController.pause();
-                      //     } else {
-                      //       widget.videoController.play();
-                      //     }
-                      //     setState(() {});
-                      //   },
-                      //   onPositionChanged: (newPosition) {
-                      //     widget.videoController.seekTo(newPosition);
-                      //   },
-                      // ),
                     ],
                   ),
                 ),

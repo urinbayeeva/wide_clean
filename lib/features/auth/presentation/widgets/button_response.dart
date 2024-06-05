@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wide_clean/core/constants/colors/app_colors.dart';
 import 'package:wide_clean/core/constants/size/size_config.dart';
-import 'package:wide_clean/core/constants/text_style/app_textstyle.dart';
+import 'package:wide_clean/core/constants/text/app_textstyle.dart';
 
 typedef CallBackFunction = void Function();
 

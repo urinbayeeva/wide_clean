@@ -7,7 +7,7 @@ export 'package:wide_clean/core/constants/size/size_config.dart';
 export 'package:wide_clean/features/auth/presentation/widgets/sign_textfield_widget.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:wide_clean/core/constants/colors/app_colors.dart';
-export 'package:wide_clean/core/constants/text_style/app_textstyle.dart';
+export 'package:wide_clean/core/constants/text/app_textstyle.dart';
 export 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_bloc.dart';
 export 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_event.dart';
 export 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_state.dart';

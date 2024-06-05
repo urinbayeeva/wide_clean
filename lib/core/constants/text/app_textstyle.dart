@@ -323,8 +323,8 @@ class AppTextStyle {
 
   static const menuCategory = TextStyle(
       color: AppColors.mainBlackColor,
-      fontSize: 16,
-      fontWeight: FontWeight.w500);
+      fontSize: 14,
+      fontWeight: FontWeight.bold);
 
   // Statistika Text Style
   static const infoStatistic = TextStyle(

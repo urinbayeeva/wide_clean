@@ -12,7 +12,12 @@ class NavigationRailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          right: const BorderSide(width: 1, color: AppColors.grey),
+        ),
+      ),
       width: 80,
       child: NavigationRail(
         backgroundColor: Colors.white,

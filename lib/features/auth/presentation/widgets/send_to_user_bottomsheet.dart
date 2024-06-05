@@ -4,28 +4,55 @@ import 'package:wide_clean/features/auth/presentation/widgets/send_sms_bottomshe
 import 'package:wide_clean/features/auth/presentation/widgets/user_display_bottomsheet.dart';
 
 void showHorizontalBottomSheet(BuildContext context) {
+  double getResponsiveWidth(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    return screenWidth <= 600 ? screenWidth : 800;
+  }
+
   showModalBottomSheet<void>(
-    backgroundColor: Colors.white,
     isScrollControlled: true,
+    isDismissible: true,
+    constraints: BoxConstraints(
+      maxWidth: getResponsiveWidth(context),
+    ),
+    backgroundColor: Colors.white,
     context: context,
     builder: (BuildContext context) => const HorizontalBottomSheetContent(),
   );
 }
 
-class HorizontalBottomSheetContent extends StatelessWidget {
-  const HorizontalBottomSheetContent({super.key});
+class HorizontalBottomSheetContent extends StatefulWidget {
+  const HorizontalBottomSheetContent({Key? key}) : super(key: key);
+
+  @override
+  State<HorizontalBottomSheetContent> createState() =>
+      _HorizontalBottomSheetContentState();
+}
+
+class _HorizontalBottomSheetContentState
+    extends State<HorizontalBottomSheetContent> {
+  bool isButtonVisible = false;
+
+  void handleAvatarTapped(bool isSelected) {
+    setState(() {
+      isButtonVisible = isSelected;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.9,
-      width: MediaQuery.of(context).size.width * 2,
+      width: MediaQuery.of(context).size.width * 0.8,
       child: Column(
         children: <Widget>[
           Container(
             decoration: const BoxDecoration(
-              border:
-                  Border(bottom: BorderSide(width: 1, color: AppColors.grey)),
+              border: Border(
+                  bottom: BorderSide(
+                width: 1,
+                color: AppColors.grey,
+              )),
             ),
             child: Padding(
               padding: const EdgeInsets.all(18),
@@ -33,47 +60,68 @@ class HorizontalBottomSheetContent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SearchTextField(),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          AppImages.addToStory,
-                          scale: 4,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          AppImages.shareToApps,
-                          scale: 4,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          AppImages.shareLink,
-                          scale: 4,
-                        ),
-                      ),
-                    ],
-                  )
+                  isButtonVisible
+                      ? GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: SizeConfig.screenWidth * 0.1,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Text("Yuborish",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600)),
+                            ),
+                          ),
+                        )
+                      : Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                AppImages.addToStory,
+                                scale: 4,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                AppImages.shareToApps,
+                                scale: 4,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                AppImages.shareLink,
+                                scale: 4,
+                              ),
+                            ),
+                          ],
+                        )
                 ],
               ),
             ),
           ),
-
-          const Expanded(
-            child: UserDisplayBottomSheet(),
+          Expanded(
+            child: UserDisplayBottomSheet(
+              onAvatarTappedCallback: handleAvatarTapped,
+            ),
           ),
-
-          // ignore: prefer_const_constructors
           Container(
             decoration: const BoxDecoration(
-                border:
-                    Border(top: BorderSide(width: 1, color: AppColors.grey))),
+                border: Border(
+                    top: BorderSide(
+              width: 1,
+              color: AppColors.grey,
+            ))),
             child: const Padding(
               padding: EdgeInsets.only(left: 30, right: 20, top: 8),
               child: Row(
@@ -83,7 +131,7 @@ class HorizontalBottomSheetContent extends StatelessWidget {
                     radius: 22,
                     backgroundColor: AppColors.grey,
                   ),
-                  SendSmsBottomSheet()
+                  SendSmsBottomSheet(),
                 ],
               ),
             ),

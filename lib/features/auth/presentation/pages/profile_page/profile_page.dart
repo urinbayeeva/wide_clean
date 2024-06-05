@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_event.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_state.dart';
+import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -90,10 +94,6 @@ class ProfilePage extends StatelessWidget {
             'user000001',
             style: AppTextStyle.profileUserName,
           ),
-          GestureDetector(
-            onTap: () {},
-            child: SvgPicture.asset(AppImages.menuIcon),
-          ),
         ],
       ),
     );
@@ -106,10 +106,12 @@ class ProfilePage extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              radius: 30,
-              backgroundColor: AppColors.grey,
-            ),
+            GestureDetector(
+                onTap: () {
+                  _showImageDialog(context);
+                },
+                child: Image.asset("assets/images/home/avatar.png",
+                    width: 70, height: 70)),
             const SizedBox(width: 8),
             const Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +125,10 @@ class ProfilePage extends StatelessWidget {
             _buildUserInfo(context),
             const Spacer(),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MenuPage()));
+              },
               child: SvgPicture.asset(AppImages.menuIcon),
             ),
           ],
@@ -141,7 +146,7 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Container(
-              width: 70,
+              width: SizeConfig.screenWidth * 0.4,
               height: 40,
               decoration: BoxDecoration(
                 color: const Color(0xFFF7F7F7),
@@ -153,6 +158,22 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  void _showImageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Image.asset("assets/images/home/avatar.png")),
+        );
+      },
     );
   }
 
@@ -183,8 +204,12 @@ class ProfilePage extends StatelessWidget {
       pinned: true,
       delegate: _SliverAppBarDelegate(
         const TabBar(
-          labelColor: Colors.black87,
-          unselectedLabelColor: Colors.grey,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorWeight: 0.01,
+          indicatorColor: AppColors.mainColor,
+          dividerColor: Colors.transparent,
+          labelColor: AppColors.mainColor,
+          unselectedLabelColor: AppColors.mainBlackColor,
           tabs: [
             Tab(text: "Photos"),
             Tab(text: "Wides"),
@@ -201,7 +226,9 @@ class ProfilePage extends StatelessWidget {
           const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
       itemCount: 50,
       itemBuilder: (context, index) {
-        return const Placeholder();
+        return const Center(
+          child: Text("No Photo"),
+        );
       },
     );
   }

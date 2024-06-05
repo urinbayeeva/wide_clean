@@ -38,6 +38,7 @@ class RightSideWidget extends StatelessWidget {
             asset: AppImages.likeFillIcon,
             paddingHeight: 9,
             onTap: () {},
+            count: "10",
           ),
           IconWidget(
             asset: AppImages.commentIcon,
