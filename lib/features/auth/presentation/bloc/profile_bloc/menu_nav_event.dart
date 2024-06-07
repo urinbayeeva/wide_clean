@@ -9,3 +9,5 @@ class NavigateToPage3 extends NavigationEvent {}
 class NavigateToPage4 extends NavigationEvent {}
 
 class NavigateToPage5 extends NavigationEvent {}
+
+class NavigateToPage6 extends NavigationEvent {}

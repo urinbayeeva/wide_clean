@@ -39,7 +39,10 @@ class _CommentViewContentState extends State<_CommentViewContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ResponsiveAppBar(title: 'Comments'),
+      appBar: ResponsiveAppBar(
+        title: 'Comments',
+        isSearch: false,
+      ),
       body: Column(
         children: [
           Expanded(child: _buildCommentList()),

@@ -32,7 +32,10 @@ class MenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ResponsiveAppBar(title: "Menu"),
+      appBar: ResponsiveAppBar(
+        title: "Menu",
+        isSearch: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         child: ListView.builder(

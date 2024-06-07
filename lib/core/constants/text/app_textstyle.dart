@@ -339,8 +339,8 @@ class AppTextStyle {
 
   static const languageCountry = TextStyle(
     color: AppColors.mainBlackColor,
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
   );
 
   static const language = TextStyle(

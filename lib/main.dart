@@ -5,10 +5,12 @@ import 'package:wide_clean/features/auth/presentation/bloc/home_bloc/comment_blo
 import 'package:wide_clean/features/auth/presentation/bloc/language_bloc/language_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/menu_nav_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_bloc.dart';
+import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/setting_nav_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/sign_in_bloc/sign_in_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/video_bloc/video_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_page.dart';
+import 'package:wide_clean/features/auth/presentation/pages/profile_page/settings/lang_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/response_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/home/home_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/splash/splash_page.dart';
@@ -62,17 +64,15 @@ class _MyAppState extends State<MyApp> {
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
         BlocProvider<VideoBloc>(
             create: (context) => VideoBloc(_videoControllers[0])),
+        BlocProvider<SettingNavBloc>(create: (context) => SettingNavBloc())
       ],
       child: MaterialApp(
         themeMode: ThemeMode.system,
         theme: ThemeData(
-          fontFamily: "Geometria",
-          checkboxTheme: Theme.of(context).checkboxTheme.copyWith(
+            fontFamily: "Geometria",
+            checkboxTheme: Theme.of(context).checkboxTheme.copyWith(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-        ),
+                    borderRadius: BorderRadius.circular(20)))),
         debugShowCheckedModeBanner: false,
         title: 'Wide',
         routes: {
@@ -81,8 +81,9 @@ class _MyAppState extends State<MyApp> {
           "/responsePage": (context) =>
               const ResponsePage(selectedPageIndex: 3),
           "/menuPage": (context) => MenuPage(),
+          "/langPage": (context) => LanguagePage()
         },
-        initialRoute: "/responsePage",
+        initialRoute: "/splashPage",
       ),
     );
   }

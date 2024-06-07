@@ -10,7 +10,10 @@ class MenuProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: ResponsiveAppBar(title: "Admin"),
+      appBar: ResponsiveAppBar(
+        title: "Admin",
+        isSearch: false,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
         child: Column(

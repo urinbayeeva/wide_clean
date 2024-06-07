@@ -1,6 +1,7 @@
 import 'package:wide_clean/core/constants/routes/route_aware.dart';
 import 'package:wide_clean/core/constants/size/scale_size.dart';
 import 'package:wide_clean/features/auth/presentation/pages/home/home_page.dart';
+import 'package:wide_clean/features/auth/presentation/pages/response_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_forget.dart';
 
 import '../../../../../core/constants/pages/all_pages.dart';
@@ -101,7 +102,9 @@ class SignInPage extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => showLanguage
                             ? const RouteAwareWidget(
-                                routeName: "/homePage", child: HomePage())
+                                routeName: "/responsePage",
+                                child: ResponsePage(selectedPageIndex: 3),
+                              )
                             : const SignInPhoneNumber(),
                       ),
                     );
