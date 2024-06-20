@@ -9,18 +9,18 @@ part 'auth_api_service.g.dart';
 abstract class AuthApiService {
   factory AuthApiService(Dio dio, {String? baseUrl}) = _AuthApiService;
 
-  @POST(apiPostRegistration)
+  @POST("Login/Registration")
   Future<HttpResponse<List<RegistrationModel>>> postUserData(
     @Body() RegistrationModel registrationModel,
   );
 
-  @GET(apiPostRegistration)
+  @GET(checkUser)
   Future<HttpResponse<bool>> checkUserByPhone(
-    @Query("phoneNumber") String phoneNumber,
+    @Query("phone") String phoneNumber,
   );
 
-  @GET(checkUser)
+  @GET("Login/sendsmscode")
   Future<HttpResponse<String>> sendSmsCode(
-    @Query("phoneNumber") String phoneNumber,
+    @Query("phone") String phone,
   );
 }

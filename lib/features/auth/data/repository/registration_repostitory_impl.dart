@@ -28,11 +28,33 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
       return DataFailed(DioException(requestOptions: RequestOptions()));
     }
   }
-  
-  @override
-  Future<DataState<List<RegistrationEntity>>> checkUserExists() {
 
-    throw UnimplementedError();
+ @override
+  Future<DataState<bool>> checkUserExists(String phoneNumber) async {
+    try {
+      final response = await _authApiService.checkUserByPhone(phoneNumber);
+      if (response.response.statusCode == 200) {
+        return DataSuccess(response.data ?? false);
+      } else {
+        return DataFailed(
+            DioException(requestOptions: response.response.requestOptions));
+      }
+    } catch (e) {
+      return DataFailed(DioException(requestOptions: RequestOptions()));
+    }
   }
 
+  @override
+  Future<DataState<bool>> sendSmsCode(String phoneNumber) async {
+    try {
+      final response = await _authApiService.sendSmsCode(phoneNumber);
+      if (response.response.statusCode == 200) {
+        return DataSuccess(true);
+      } else {
+        return DataFailed(DioException(requestOptions: response.response.requestOptions));
+      }
+    } catch (e) {
+      return DataFailed(DioException(requestOptions: RequestOptions()));
+    }
+  }
 }

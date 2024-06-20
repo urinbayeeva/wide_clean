@@ -1,4 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_bloc.dart'
+    as register;
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_event.dart'
+    as register;
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_state.dart'
+    as register;
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -16,7 +24,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Color(0xFFFEFEFE),
+      backgroundColor: const Color(0xFFFEFEFE),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -25,7 +33,7 @@ class _SignUpState extends State<SignUp> {
             const Spacer(),
             SvgPicture.asset(AppImages.loginLogo),
             SizedBox(height: SizeConfig.screenHeight * 0.10),
-            RichTextWidget(),
+            const RichTextWidget(),
             SizedBox(height: SizeConfig.screenHeight * 0.10),
             SignTextFieldWidget(
               controller: userNameController,
@@ -38,23 +46,24 @@ class _SignUpState extends State<SignUp> {
               hintText: "90 000 00 00 ",
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.040),
-            DividerWidget(),
+            const DividerWidget(),
             SizedBox(height: SizeConfig.screenHeight * 0.040),
-            GoogleSignButton(),
+            const GoogleSignButton(),
             const Spacer(),
-            BlocConsumer<AuthBloc, AuthState>(
+            BlocConsumer<register.RegistrationBloc, register.RegistrationState>(
               listener: (context, state) {
-                if (state is AuthSmsSent) {
+                if (state is register.SmsCodeSent) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          SignUpCode(phoneNumber: numberController.text),
+                      builder: (context) => SignUpCode(
+                        phoneNumber: numberController.text,
+                      ),
                     ),
                   );
-                } else if (state is AuthError) {
+                } else if (state is register.RegistrationFailure) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.message)),
+                    SnackBar(content: Text(state.error)),
                   );
                 }
               },
@@ -67,12 +76,11 @@ class _SignUpState extends State<SignUp> {
                       : AppColors.buttonHover,
                   text: "Keyingisi",
                   onPressed: () {
-                    print("${numberController.text}");
                     if (numberController.text.isNotEmpty) {
-                      context.read<AuthBloc>().add(
-                            SendSmsCodeEvent(
-                                '${codeNameController.text}${numberController.text}'),
-                          );
+                      BlocProvider.of<register.RegistrationBloc>(context).add(
+                        register.CheckUserExists(
+                            "${codeNameController.text}${numberController.text}"),
+                      );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

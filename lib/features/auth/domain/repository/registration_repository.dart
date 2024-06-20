@@ -3,5 +3,6 @@ import 'package:wide_clean/features/auth/domain/entities/registration.dart';
 
 abstract class RegistrationRepository {
   Future<DataState<List<RegistrationEntity>>> postUserData();
-  Future<DataState<List<RegistrationEntity>>> checkUserExists();
+  Future<DataState<bool>> checkUserExists(String phoneNumber);
+  Future<DataState<bool>> sendSmsCode(String phoneNumber);
 }

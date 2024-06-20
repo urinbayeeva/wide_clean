@@ -14,9 +14,9 @@ class AuthRepository {
     }
   }
 
-   Future<String> sendSmsCode(String phoneNumber) async {
+  Future<String> sendSmsCode(String phone) async {
     try {
-      final response = await apiService.sendSmsCode(phoneNumber);
+      final response = await apiService.sendSmsCode(phone);
       return response.data ?? '';
     } catch (e) {
       rethrow;

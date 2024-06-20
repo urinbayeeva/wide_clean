@@ -1,15 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/data/data_sources/remote/auth_api_service.dart';
 import 'package:wide_clean/features/auth/data/repository/auth_repo.dart';
-import 'package:wide_clean/features/auth/presentation/bloc/auth/auth_bloc.dart';
-import 'package:wide_clean/features/auth/presentation/pages/sign_up/sign_up.dart';
+import 'package:wide_clean/features/auth/data/repository/registration_repostitory_impl.dart';
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_bloc.dart';
 import 'package:dio/dio.dart';
 
 // Initialize Dio and AuthApiService outside of the providers list
-final dio = Dio();
+final dio = Dio()
+  ..interceptors.add(PrettyDioLogger(
+    requestHeader: true,
+    requestBody: true,
+  ));
+
 final authApiService = AuthApiService(dio);
 final authRepository = AuthRepository(authApiService);
+final registrationRepository = RegistrationRepositoryImpl(authApiService);
 
 class AppProviders {
   static List<BlocProvider> get providers => [
@@ -20,8 +27,7 @@ class AppProviders {
         BlocProvider<SignInBloc>(create: (context) => SignInBloc()),
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
         BlocProvider<SettingNavBloc>(create: (context) => SettingNavBloc()),
-        BlocProvider<AuthBloc>(
-          create: (_) => AuthBloc(authRepository),
-        ),
+        BlocProvider<RegistrationBloc>(
+            create: (context) => RegistrationBloc(registrationRepository)),
       ];
 }

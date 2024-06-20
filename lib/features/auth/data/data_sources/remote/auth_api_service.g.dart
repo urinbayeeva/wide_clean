@@ -56,7 +56,7 @@ class _AuthApiService implements AuthApiService {
   @override
   Future<HttpResponse<bool>> checkUserByPhone(String phoneNumber) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'phoneNumber': phoneNumber};
+    final queryParameters = <String, dynamic>{r'phone': phoneNumber};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
@@ -67,7 +67,7 @@ class _AuthApiService implements AuthApiService {
     )
             .compose(
               _dio.options,
-              '/Login/freeuse',
+              'Login/freeuser',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -82,9 +82,9 @@ class _AuthApiService implements AuthApiService {
   }
 
   @override
-  Future<HttpResponse<String>> sendSmsCode(String phoneNumber) async {
+  Future<HttpResponse<String>> sendSmsCode(String phone) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'phoneNumber': phoneNumber};
+    final queryParameters = <String, dynamic>{r'phone': phone};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
@@ -95,7 +95,7 @@ class _AuthApiService implements AuthApiService {
     )
             .compose(
               _dio.options,
-              '/Login/sendsmscode',
+              'Login/sendsmscode',
               queryParameters: queryParameters,
               data: _data,
             )
