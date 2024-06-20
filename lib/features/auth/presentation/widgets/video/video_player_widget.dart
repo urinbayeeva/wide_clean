@@ -15,9 +15,8 @@ class VideoPlayerWidget extends StatelessWidget {
       onDoubleTap: () {
         context.read<VideoBloc>().add(ToggleLikeEvent());
       },
-      onTap: () {
-        context.read<VideoBloc>().add(PlayPauseEvent());
-      },
+      onTap: () =>
+        context.read<VideoBloc>().add(PlayPauseEvent()),
       child: SizedBox(
         height: videoController.value.size.height,
         width: videoController.value.size.width,

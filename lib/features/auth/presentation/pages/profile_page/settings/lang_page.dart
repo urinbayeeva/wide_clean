@@ -1,6 +1,6 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/features/auth/data/models/change_language_model.dart';
-import 'package:wide_clean/responsive_appbar.dart';
+import 'package:wide_clean/features/auth/data/models/auth/change_language_model.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/responsive_appbar.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({super.key});

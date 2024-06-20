@@ -1,8 +1,7 @@
 import 'package:wide_clean/core/constants/routes/route_aware.dart';
-import 'package:wide_clean/core/constants/size/scale_size.dart';
-import 'package:wide_clean/features/auth/presentation/pages/home/home_page.dart';
-import 'package:wide_clean/features/auth/presentation/pages/response_page.dart';
+import 'package:wide_clean/config/theme/scale_size.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_forget.dart';
+import 'package:wide_clean/features/auth/presentation/pages/sign_up/sign_up.dart';
 
 import '../../../../../core/constants/pages/all_pages.dart';
 
@@ -75,7 +74,8 @@ class SignInPage extends StatelessWidget {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () {},
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignUp())),
                 child: const Text(
                   "Ro'yxatdan o'tish",
                   style: AppTextStyle.textButton,
@@ -103,7 +103,7 @@ class SignInPage extends StatelessWidget {
                         builder: (context) => showLanguage
                             ? const RouteAwareWidget(
                                 routeName: "/responsePage",
-                                child: ResponsePage(selectedPageIndex: 3),
+                                child: MainPage(selectedPageIndex: 3),
                               )
                             : const SignInPhoneNumber(),
                       ),

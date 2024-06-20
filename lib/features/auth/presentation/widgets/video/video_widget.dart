@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:shimmer/shimmer.dart';
 import 'package:video_player/video_player.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
@@ -6,18 +7,20 @@ import 'package:wide_clean/features/auth/presentation/bloc/video_bloc/video_even
 import 'package:wide_clean/features/auth/presentation/bloc/video_bloc/video_state.dart';
 import 'package:wide_clean/features/auth/presentation/widgets/video/more_bottom_sheet_widget.dart';
 import 'package:wide_clean/features/auth/presentation/widgets/video/video_info_widget.dart';
-import 'video_player_widget.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/video/video_player_widget.dart';
 
 class VideoWidget extends StatefulWidget {
   final VideoPlayerController videoController;
+  final String? photoPath;
 
-  const VideoWidget({super.key, required this.videoController});
+  const VideoWidget({super.key, required this.videoController, this.photoPath});
 
   @override
   State<VideoWidget> createState() => _VideoWidgetState();
 }
 
 class _VideoWidgetState extends State<VideoWidget> {
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -26,15 +29,12 @@ class _VideoWidgetState extends State<VideoWidget> {
       child: BlocBuilder<VideoBloc, VideoState>(
         builder: (context, state) {
           bool isLoading = state is VideoLoading;
-          bool isPlaying = widget.videoController.value.isPlaying;
-          Duration position = widget.videoController.value.position;
-          Duration duration = widget.videoController.value.duration;
-
           return Stack(
             children: [
               if (isLoading) _buildLoadingShimmer(),
               if (state is VideoLoaded)
                 VideoPlayerWidget(videoController: widget.videoController),
+              if (widget.photoPath != null) Image.file(File(widget.photoPath!)),
               Positioned(
                 top: 18,
                 right: 4,

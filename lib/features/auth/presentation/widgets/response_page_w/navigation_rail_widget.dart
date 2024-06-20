@@ -15,16 +15,18 @@ class NavigationRailWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          right: const BorderSide(width: 1, color: AppColors.grey),
+          right: selectedIndex == 2
+              ? BorderSide.none
+              : const BorderSide(width: 1, color: AppColors.grey),
         ),
       ),
-      width: 80,
       child: NavigationRail(
         backgroundColor: Colors.white,
         selectedIndex: selectedIndex,
         onDestinationSelected: onDestinationSelected,
         labelType: NavigationRailLabelType.none,
         useIndicator: false,
+        indicatorColor: Colors.transparent,
         leading: selectedIndex == 2
             ? const SizedBox.shrink()
             : Container(
@@ -32,7 +34,10 @@ class NavigationRailWidget extends StatelessWidget {
                   border: Border(
                     bottom: selectedIndex == 1
                         ? BorderSide.none
-                        : const BorderSide(width: 1, color: AppColors.grey),
+                        : const BorderSide(
+                            width: 1,
+                            color: AppColors.grey,
+                          ),
                   ),
                 ),
                 child: Padding(

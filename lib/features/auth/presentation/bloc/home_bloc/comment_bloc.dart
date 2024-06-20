@@ -1,5 +1,5 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/features/auth/data/models/comment_model.dart';
+import 'package:wide_clean/features/auth/data/models/home/comment_model.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/home_bloc/comment_event.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/home_bloc/comment_state.dart';
 

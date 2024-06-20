@@ -1,6 +1,6 @@
 // language_event.dart
 import 'package:equatable/equatable.dart';
-import 'package:wide_clean/features/auth/data/models/language_model.dart';
+import 'package:wide_clean/features/auth/data/models/auth/language_model.dart';
 
 abstract class LanguageEvent extends Equatable {
   const LanguageEvent();

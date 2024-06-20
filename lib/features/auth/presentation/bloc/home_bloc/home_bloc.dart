@@ -6,14 +6,15 @@ import 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<LoadVideosEvent>(_onLoadVideos);
-    on<ToggleFollowEvent>(
-        _onToggleFollow); // Add this line to handle the toggle event
+    on<ToggleFollowEvent>(_onToggleFollow);
   }
 
   void _onLoadVideos(LoadVideosEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoading());
 
     List<VideoPlayerController> videoControllers = [
+      VideoPlayerController.networkUrl(Uri.parse(
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4')),
       VideoPlayerController.networkUrl(Uri.parse(
           'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4')),
       VideoPlayerController.networkUrl(Uri.parse(
@@ -22,7 +23,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     for (var controller in videoControllers) {
       await controller.initialize();
+      controller.setLooping(true);
     }
+
+    videoControllers.first.play();
 
     emit(HomeLoaded(
       videoControllers: videoControllers,

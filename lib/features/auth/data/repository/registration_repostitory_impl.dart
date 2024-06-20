@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:wide_clean/core/resources/data_state.dart';
 import 'package:wide_clean/features/auth/data/data_sources/remote/auth_api_service.dart';
-import 'package:wide_clean/features/auth/data/models/registration_model.dart';
+import 'package:wide_clean/features/auth/data/models/auth/registration_model.dart';
 import 'package:wide_clean/features/auth/domain/entities/registration.dart';
 import 'package:wide_clean/features/auth/domain/repository/registration_repository.dart';
 
@@ -31,7 +31,7 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
   
   @override
   Future<DataState<List<RegistrationEntity>>> checkUserExists() {
-    // TODO: implement checkUserExists
+
     throw UnimplementedError();
   }
 

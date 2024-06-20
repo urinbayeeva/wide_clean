@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wide_clean/core/constants/colors/app_colors.dart';
-import 'package:wide_clean/features/auth/data/models/navigation_item_settings.dart';
+import 'package:wide_clean/features/auth/data/models/auth/navigation_item_settings.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/menu_nav_event.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/setting_nav_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/settings/lang_page.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/settings/user_info.dart';
-import 'package:wide_clean/responsive_appbar.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/responsive_appbar.dart';
 
 class MenuSettings extends StatelessWidget {
   const MenuSettings({super.key});

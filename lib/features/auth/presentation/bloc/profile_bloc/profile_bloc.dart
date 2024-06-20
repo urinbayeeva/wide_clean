@@ -1,14 +1,14 @@
+// profile_bloc.dart
 import 'package:bloc/bloc.dart';
-import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_event.dart';
-import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_state.dart';
+import 'profile_event.dart';
+import 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc() : super(ProfileInitial());
+  ProfileBloc() : super(ProfileInitial()) {
+    on<ScrollEvent>(_onScrollEvent);
+  }
 
-  @override
-  Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    if (event is ScrollEvent) {
-      yield ProfileScrolled(event.scrollOffset > 0);
-    }
+  void _onScrollEvent(ScrollEvent event, Emitter<ProfileState> emit) {
+    emit(ProfileScrolled(event.scrollOffset));
   }
 }

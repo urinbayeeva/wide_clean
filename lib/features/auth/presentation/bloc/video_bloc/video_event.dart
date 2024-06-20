@@ -8,6 +8,11 @@ abstract class VideoEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class InitControllersEvent extends VideoEvent {
+  final List<String> urls;
+  const InitControllersEvent(this.urls);
+}
+  
 class LoadVideoEvent extends VideoEvent {}
 
 class PlayPauseEvent extends VideoEvent {}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wide_clean/responsive_appbar.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/responsive_appbar.dart';
 
 class MenuSaved extends StatelessWidget {
   const MenuSaved({super.key});

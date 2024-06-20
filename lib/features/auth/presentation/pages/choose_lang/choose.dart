@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wide_clean/core/constants/text/app_textstyle.dart';
-import 'package:wide_clean/core/constants/size/size_config.dart';
+import 'package:wide_clean/config/theme/light_app_textstyle.dart';
+import 'package:wide_clean/config/theme/size_config.dart';
 import 'package:wide_clean/features/auth/presentation/pages/sign_in/sign_in_page.dart';
-import 'package:wide_clean/features/auth/presentation/widgets/button_response.dart';
-import 'package:wide_clean/features/auth/presentation/widgets/radio_widget.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/button_response.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/radio_widget.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/language_bloc/language_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/language_bloc/language_state.dart';
 

@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:io';
+
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_event.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_state.dart';
+import 'package:wide_clean/features/auth/presentation/pages/profile_page/edit_profile_info.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -20,9 +20,11 @@ class ProfilePage extends StatelessWidget {
           backgroundColor: Colors.white,
           body: NotificationListener<ScrollNotification>(
             onNotification: (scrollNotification) {
-              context
-                  .read<ProfileBloc>()
-                  .add(ScrollEvent(scrollNotification.metrics.pixels));
+              if (scrollNotification is ScrollUpdateNotification) {
+                context
+                    .read<ProfileBloc>()
+                    .add(ScrollEvent(scrollNotification.metrics.pixels));
+              }
               return true;
             },
             child: CustomScrollView(
@@ -49,8 +51,8 @@ class ProfilePage extends StatelessWidget {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         bool isScrolled = state is ProfileScrolled ? state.isScrolled : false;
-
         return SliverAppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
           pinned: true,
@@ -87,10 +89,10 @@ class ProfilePage extends StatelessWidget {
   Widget _buildCollapsedTitle() {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
+          Text(
             'user000001',
             style: AppTextStyle.profileUserName,
           ),
@@ -107,12 +109,17 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GestureDetector(
-                onTap: () {
-                  _showImageDialog(context);
-                },
-                child: Image.asset("assets/images/home/avatar.png",
-                    width: 70, height: 70)),
-            const SizedBox(width: 8),
+              onTap: () {
+                _showImageDialog(context);
+              },
+              child: CircleAvatar(
+                radius: 35,
+                backgroundColor: Colors.grey,
+              ),
+            ),
+            const SizedBox(
+              width: 8,
+            ),
             const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +134,7 @@ class ProfilePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MenuPage()));
+                    MaterialPageRoute(builder: (context) => const MenuPage()));
               },
               child: SvgPicture.asset(AppImages.menuIcon),
             ),
@@ -145,15 +152,19 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Container(
-              width: SizeConfig.screenWidth * 0.4,
-              height: 40,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF7F7F7),
-                borderRadius: BorderRadius.circular(8),
+            InkWell(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EditProfileInfo())),
+              child: Container(
+                width: SizeConfig.screenWidth * 0.4,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF7F7F7),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Center(
+                    child: Text("Edit", style: AppTextStyle.editUserName)),
               ),
-              child: const Center(
-                  child: Text("Edit", style: AppTextStyle.editUserName)),
             )
           ],
         ),

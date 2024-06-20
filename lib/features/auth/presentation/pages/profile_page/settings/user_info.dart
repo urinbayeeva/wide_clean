@@ -1,5 +1,5 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/responsive_appbar.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/responsive_appbar.dart';
 
 class UserInfo extends StatefulWidget {
   const UserInfo({super.key});

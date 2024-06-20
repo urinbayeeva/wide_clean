@@ -1,13 +1,13 @@
 import 'package:provider/provider.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/features/auth/data/models/navigation_item_menu.dart';
+import 'package:wide_clean/features/auth/data/models/auth/navigation_item_menu.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/menu_nav_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/menu_nav_event.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_profile.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_saved.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_settings.dart';
 import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_statistic.dart';
-import 'package:wide_clean/responsive_appbar.dart';
+import 'package:wide_clean/features/auth/presentation/widgets/common/responsive_appbar.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});

@@ -17,7 +17,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
   void _onLoadVideo(LoadVideoEvent event, Emitter<VideoState> emit) async {
     emit(VideoLoading());
     try {
-      await videoController.initialize();
+      // await videoController.initialize();
       emit(VideoLoaded(
         isPlaying: false,
         isFollowed: false,
@@ -53,9 +53,4 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     // Handle like toggling logic here
   }
 
-  @override
-  Future<void> close() {
-    videoController.dispose();
-    return super.close();
-  }
 }

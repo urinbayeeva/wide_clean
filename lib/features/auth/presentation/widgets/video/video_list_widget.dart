@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:wide_clean/core/constants/text/app_textstyle.dart';
+import 'package:wide_clean/config/theme/light_app_textstyle.dart';
 import 'video_widget.dart';
 
 class VideoListWidget extends StatelessWidget {
