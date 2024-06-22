@@ -15,7 +15,6 @@ final dio = Dio()
   ));
 
 final authApiService = AuthApiService(dio);
-final authRepository = AuthRepository(authApiService);
 final registrationRepository = RegistrationRepositoryImpl(authApiService);
 
 class AppProviders {

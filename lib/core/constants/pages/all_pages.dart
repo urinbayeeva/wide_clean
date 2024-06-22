@@ -31,7 +31,7 @@ export 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_
 export 'package:wide_clean/app.dart';
 export 'package:wide_clean/config/providers/app_providers.dart';
 export 'package:wide_clean/config/theme/app_theme.dart';
-export 'package:wide_clean/config/routes/app_route.dart';
+export 'package:wide_clean/core/constants/routes/app_route.dart';
 export 'package:wide_clean/features/auth/presentation/widgets/post/post_post_view.dart';
 export 'package:wide_clean/core/constants/pages/all_pages.dart';
 export 'package:wide_clean/features/auth/presentation/pages/sign_up/sign_up_code.dart';

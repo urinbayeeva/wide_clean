@@ -1,4 +1,4 @@
-import 'package:wide_clean/config/routes/route_names.dart';
+import 'package:wide_clean/core/constants/routes/route_names.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/data/repository/auth_repo.dart';
 

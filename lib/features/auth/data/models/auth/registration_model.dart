@@ -1,5 +1,3 @@
-// ignore_for_file: use_super_parameters
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:wide_clean/features/auth/domain/entities/registration.dart';
 
