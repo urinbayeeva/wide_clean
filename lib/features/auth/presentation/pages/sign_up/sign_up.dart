@@ -81,6 +81,15 @@ class _SignUpState extends State<SignUp> {
                         register.CheckUserExists(
                             "${codeNameController.text}${numberController.text}"),
                       );
+                      BlocProvider.of<register.RegistrationBloc>(context).add(
+                          register.SendSmsCode(
+                              "${codeNameController.text}${numberController.text}"));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpCode(
+                                  phoneNumber:
+                                      "${codeNameController.text}${numberController.text}")));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

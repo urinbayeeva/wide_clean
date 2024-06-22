@@ -35,7 +35,7 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
       final response = await _authApiService.checkUserByPhone(phoneNumber);
       print("Response: \n \n $response \n\n");
       if (response.response.statusCode == 200) {
-        return DataSuccess(response.response.data ?? false);
+        return DataSuccess(response.data.result.success);
       } else {
         return DataFailed(
             DioException(requestOptions: response.response.requestOptions));
