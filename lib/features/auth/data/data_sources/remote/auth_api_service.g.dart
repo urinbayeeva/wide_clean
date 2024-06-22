@@ -54,15 +54,14 @@ class _AuthApiService implements AuthApiService {
   }
 
   @override
-  Future<HttpResponse<List<RegistrationModel>>> checkUserByPhone(
-      String phoneNumber) async {
+  Future<HttpResponse<ApiResponse>> checkUserByPhone(String phoneNumber) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'phone': phoneNumber};
     final _headers = <String, dynamic>{r'Accept': 'text/plain'};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<List<dynamic>>(
-        _setStreamType<HttpResponse<List<RegistrationModel>>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<ApiResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -78,10 +77,7 @@ class _AuthApiService implements AuthApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) =>
-            RegistrationModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = ApiResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
