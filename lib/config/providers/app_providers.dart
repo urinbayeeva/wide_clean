@@ -1,13 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
 import 'package:wide_clean/features/auth/data/data_sources/remote/auth_api_service.dart';
-import 'package:wide_clean/features/auth/data/repository/auth_repo.dart';
 import 'package:wide_clean/features/auth/data/repository/registration_repostitory_impl.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_bloc.dart';
 import 'package:dio/dio.dart';
 
-// Initialize Dio and AuthApiService outside of the providers list
 final dio = Dio()
   ..interceptors.add(PrettyDioLogger(
     requestHeader: true,

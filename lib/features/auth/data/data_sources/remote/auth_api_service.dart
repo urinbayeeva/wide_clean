@@ -3,7 +3,6 @@ import 'package:retrofit/retrofit.dart';
 import 'package:wide_clean/core/constants/api/api_constants.dart';
 import 'package:wide_clean/features/auth/data/models/auth/registration_model.dart';
 import 'package:dio/dio.dart' hide Headers;
-import 'package:wide_clean/features/auth/data/models/response_model.dart';
 part 'auth_api_service.g.dart';
 
 @RestApi(baseUrl: wideAPIBaseURL)
