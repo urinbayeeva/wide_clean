@@ -36,6 +36,12 @@ class AppRoutes {
         return MaterialPageRoute(
               builder: (context) => const EditProfileInfo(), settings: settings);
       }
+
+       case RouteNames.mainPage : 
+      {
+        return MaterialPageRoute(
+              builder: (context) => const MainPage(selectedPageIndex: 3,), settings: settings);
+      }
       
       default:
         {

@@ -36,5 +36,13 @@ class VerifySmsCode extends RegistrationEvent {
 }
 
 class RegisterUser extends RegistrationEvent {
-  const RegisterUser();
+  final String name;
+  final String password;
+  final String phoneNumber;
+  final String country;
+
+  const RegisterUser(this.name, this.password, this.phoneNumber, this.country);
+
+  @override
+  List<Object> get props => [name, password, phoneNumber, country];
 }

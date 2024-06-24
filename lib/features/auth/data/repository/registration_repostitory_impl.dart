@@ -33,9 +33,11 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
   Future<DataState<bool>> checkUserExists(String phoneNumber) async {
     try {
       final response = await _authApiService.checkUserByPhone(phoneNumber);
-      print("Response: \n \n $response \n\n");
-      if (response.response.statusCode == 200) {
-        return DataSuccess(response.data.result.success);
+      print("Response: \n \n ${response.data.result.success} \n\n");
+      if (response.data.result.success == true) {
+        return DataSuccess(true);
+      } else if (response.data.result.success == false) {
+        return DataSuccess(false);
       } else {
         return DataFailed(
             DioException(requestOptions: response.response.requestOptions));
@@ -51,7 +53,7 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
     try {
       final response = await _authApiService.sendSmsCode(phoneNumber);
       if (response.response.statusCode == 200) {
-        return DataSuccess(true);
+        return DataSuccess(response.data.result.success);
       } else {
         return DataFailed(
             DioException(requestOptions: response.response.requestOptions));
@@ -61,3 +63,4 @@ class RegistrationRepositoryImpl implements RegistrationRepository {
     }
   }
 }
+

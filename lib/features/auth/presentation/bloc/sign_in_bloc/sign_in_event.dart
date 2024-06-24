@@ -25,3 +25,4 @@ class RegisterUser extends SignInEvent {
   @override
   List<Object> get props => [userName, password, phone, country];
 }
+  

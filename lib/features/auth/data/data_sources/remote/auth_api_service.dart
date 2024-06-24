@@ -25,7 +25,7 @@ abstract class AuthApiService {
   );
 
   @GET("Login/sendsmscode")
-  Future<HttpResponse<String>> sendSmsCode(
+  Future<HttpResponse<ApiResponse>> sendSmsCode(
     @Query("phone") String phone,
   );
 }

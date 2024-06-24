@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_bloc.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_event.dart';
 import 'package:wide_clean/features/auth/presentation/bloc/profile_bloc/profile_state.dart';
-import 'package:wide_clean/features/auth/presentation/pages/profile_page/edit_profile_info.dart';
-import 'package:wide_clean/features/auth/presentation/pages/profile_page/menu/menu_page.dart';
+
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});

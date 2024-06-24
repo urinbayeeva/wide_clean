@@ -70,7 +70,8 @@ class _SignUpCodeState extends State<SignUpCode> {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                text: "${widget.phoneNumber} raqamiga kod yuborildi. Kodni kiriting:",
+                text:
+                    "${widget.phoneNumber} raqamiga kod yuborildi. Kodni kiriting:",
                 style: AppTextStyle.sendUserSms,
                 children: [
                   TextSpan(
@@ -83,12 +84,13 @@ class _SignUpCodeState extends State<SignUpCode> {
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.12),
             Pinput(
+              length: 5,
               controller: smsCodeController,
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: focusedPinTheme,
               submittedPinTheme: submittedPinTheme,
               validator: (s) {
-                return s == '2222' ? null : 'Pin is incorrect';
+                return s == '22222' ? null : 'Pin is incorrect';
               },
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
               showCursor: true,
@@ -119,12 +121,12 @@ class _SignUpCodeState extends State<SignUpCode> {
               text: "Keyingisi",
               onPressed: () {
                 if (smsCodeController.text.isNotEmpty) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpPassword(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const SignUpPassword(),
+                  //   ),
+                  // );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

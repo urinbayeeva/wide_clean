@@ -5,6 +5,6 @@ class RouteNames {
   static const String menuPage = "/menuPage";
   static const String langPage = "/langPage";
   static const String editProfileInfo = "/editProfileInfo";
-   
+  static const String mainPage = "/mainPage";
 
 }

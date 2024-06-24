@@ -7,6 +7,7 @@ import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/registe
     as register;
 import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_state.dart'
     as register;
+import 'package:wide_clean/features/auth/presentation/pages/sign_up/sign_up_password.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -51,22 +52,7 @@ class _SignUpState extends State<SignUp> {
             const GoogleSignButton(),
             const Spacer(),
             BlocConsumer<register.RegistrationBloc, register.RegistrationState>(
-              listener: (context, state) {
-                if (state is register.SmsCodeSent) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignUpCode(
-                        phoneNumber: numberController.text,
-                      ),
-                    ),
-                  );
-                } else if (state is register.RegistrationFailure) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(state.error)),
-                  );
-                }
-              },
+              listener: (context, state) {},
               builder: (context, state) {
                 return ButtonResponse(
                   color: userNameController.text.isNotEmpty &&
@@ -76,20 +62,31 @@ class _SignUpState extends State<SignUp> {
                       : AppColors.buttonHover,
                   text: "Keyingisi",
                   onPressed: () {
-                    if (numberController.text.isNotEmpty) {
+                    if (codeNameController.text.isNotEmpty && numberController.text.isNotEmpty) {
                       BlocProvider.of<register.RegistrationBloc>(context).add(
                         register.CheckUserExists(
                             "${codeNameController.text}${numberController.text}"),
                       );
+                      if (state is register.UserExists) {
+                       
+                      } else if (state is register.UserDoesNotExist) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Placeholder()));
+                      }
                       BlocProvider.of<register.RegistrationBloc>(context).add(
-                          register.SendSmsCode(
-                              "${codeNameController.text}${numberController.text}"));
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpCode(
-                                  phoneNumber:
-                                      "${codeNameController.text}${numberController.text}")));
+                        register.CheckUserExists(
+                            "${codeNameController.text}${numberController.text}"),
+                      );
+
+                      // BlocProvider.of<register.RegistrationBloc>(context).add(
+                      //     register.SendSmsCode(
+                      //         "${codeNameController.text}${numberController.text}"));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => SignUpPassword()));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

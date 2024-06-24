@@ -1,8 +1,16 @@
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_bloc.dart' as register;
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_event.dart' as register;
+
+import 'package:wide_clean/features/auth/presentation/bloc/register_bloc/register_state.dart' as register;
 import 'package:wide_clean/features/auth/presentation/widgets/common/password_richtext.dart';
 
+
+
 class SignUpPassword extends StatefulWidget {
-  const SignUpPassword({super.key});
+  final String name;
+  final String phoneNumber;
+  const SignUpPassword({super.key, required this.name, required this.phoneNumber});
 
   @override
   State<SignUpPassword> createState() => _SignUpPasswordState();
@@ -46,16 +54,25 @@ class _SignUpPasswordState extends State<SignUpPassword> {
             const Spacer(),
             const Text("Kirish", style: AppTextStyle.loginRegistrationStyle),
             SizedBox(height: SizeConfig.screenHeight * 0.040),
-            ButtonResponse(
-                text: "Keyingisi",
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MainPage(selectedPageIndex: 3))),
-                color: passwordController.text.isNotEmpty &&
-                        confirmPassword.text.isNotEmpty
-                    ? AppColors.mainColor
-                    : AppColors.buttonHover),
+           BlocConsumer<register.RegistrationBloc, register.RegistrationState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return ButtonResponse(
+                  color: passwordController.text.isNotEmpty &&
+                          confirmPassword.text.isNotEmpty 
+                      ? AppColors.mainColor
+                      : AppColors.buttonHover,
+                  text: "Keyingisi",
+                  onPressed: () {
+                    if (passwordController.text.isNotEmpty &&
+                       confirmPassword.text.isNotEmpty ) {
+                     
+                    }
+                   
+                  },
+                );
+              },
+            ),
             SizedBox(height: SizeConfig.screenHeight * 0.025),
           ],
         ),

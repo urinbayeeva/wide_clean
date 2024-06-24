@@ -19,10 +19,10 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       CheckUserExists event, Emitter<RegistrationState> emit) async {
     final response =
         await _registrationRepository.checkUserExists(event.phoneNumber);
-    if (response is DataSuccess && response.data == true) {
-      emit(UserExists());
-    } else if (response is DataSuccess && response.data == false) {
+    if (response is DataSuccess == true) {
       emit(UserDoesNotExist());
+    } else if (response is DataSuccess == false) {
+      emit(UserExists());
     } else {
       emit(RegistrationFailure("Failed to check user existence"));
     }
@@ -50,9 +50,11 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     }
   }
 
-  void _onRegisterUser(
+ void _onRegisterUser(
       RegisterUser event, Emitter<RegistrationState> emit) async {
-    final response = await _registrationRepository.postUserData();
+    final response = await _registrationRepository.postUserData(
+  
+    );
     if (response is DataSuccess) {
       emit(RegistrationSuccess());
     } else {

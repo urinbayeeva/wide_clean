@@ -83,13 +83,13 @@ class _AuthApiService implements AuthApiService {
   }
 
   @override
-  Future<HttpResponse<String>> sendSmsCode(String phone) async {
+  Future<HttpResponse<ApiResponse>> sendSmsCode(String phone) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'phone': phone};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<String>(_setStreamType<HttpResponse<String>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<ApiResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -105,7 +105,7 @@ class _AuthApiService implements AuthApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data!;
+    final value = ApiResponse.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

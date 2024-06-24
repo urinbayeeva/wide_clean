@@ -1,9 +1,7 @@
 import 'package:wide_clean/core/constants/routes/route_names.dart';
 import 'package:wide_clean/core/constants/pages/all_pages.dart';
-import 'package:wide_clean/features/auth/data/repository/auth_repo.dart';
 
 class MyApp extends StatefulWidget {
-
   const MyApp({super.key});
 
   @override
@@ -21,7 +19,7 @@ class _MyAppState extends State<MyApp> {
         darkTheme: CustomTheme.darkThemeData,
         debugShowCheckedModeBanner: false,
         title: 'Wide',
-        initialRoute: RouteNames.splashPage,
+        initialRoute: RouteNames.mainPage,
         onGenerateRoute: AppRoutes.onGenerateRoute,
       ),
     );
